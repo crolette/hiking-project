@@ -1,13 +1,14 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/29fxUUK1)
+
 # The hiking project 🥾
 
-|Challenge Parameters  | Challenge Details |
-|:---------------------|:------------------|
-|Repository            | `hiking-project`  |
-|Challenge type        | `Project`         |
-|Deadline              | `30/05/2023 5pm`      |
-|Deployment method     | `TBD`             |
-|Group composition     | `Trio or Duo`            |
+| Challenge Parameters | Challenge Details |
+| :------------------- | :---------------- |
+| Repository           | `hiking-project`  |
+| Challenge type       | `Project`         |
+| Deadline             | `30/05/2023 5pm`  |
+| Deployment method    | `TBD`             |
+| Group composition    | `Trio or Duo`     |
 
 ## The mission
 
@@ -17,50 +18,51 @@ Help hikers to connect each others for building a better world.
 
 ## Goals - At the end of this challenge you should have improved your:
 
-- [ ] Project planning.
-- [ ] Mock-up creation.
-- [ ] *semantical* HTML.
-- [ ] Database creation.
-- [ ] Creation of dynamic website.
-- [ ] Secure programming (with nice errors messages).
-- [ ] Use a router.
-- [ ] OOP.
-- [ ] MVC architecture.
-- [ ] Agile methodology.
+-   [ ] Project planning.
+-   [ ] Mock-up creation.
+-   [ ] _semantical_ HTML.
+-   [ ] Database creation.
+-   [ ] Creation of dynamic website.
+-   [ ] Secure programming (with nice errors messages).
+-   [ ] Use a router.
+-   [ ] OOP.
+-   [ ] MVC architecture.
+-   [ ] Agile methodology.
 
 ## Instructions
 
-### PART 1: Creation of the database
+### PART 1: Creation of the database l
 
 To start working, it's easier to already have datas.
 Create a database named `hiking` followed by a table called `hikes` and fill it with the following fields:
 
-- **Hikes**:
-    - ID (that will be assigned automatically)
-    - name
-    - distance
-    - duration
-    - elevation_gain
-    - description
-    - created_at 
-    - updated_at (if needed)
+-   **Hikes**:
+    -   ID (that will be assigned automatically)
+    -   name
+    -   distance
+    -   duration
+    -   elevation_gain
+    -   description
+    -   created_at
+    -   updated_at (if needed)
 
 Once done, you can retrieve some data from an existing website like [visandro](https://www.visorando.be/) or [wikiloc](https://www.wikiloc.com/).
 You have to collect at least 8 hikes and insert them the database. Each hike must fill in the fields.
 
 Another tables:
 
-- **Users**:
-    - ID
-    - firstname
-    - lastname
-    - nickname (must be unique)
-    - email (must be unique)
-    - password (must be hashed)
+-   **Users**:
 
-- **Tags**:
-    - ID
-    - name
+    -   ID
+    -   firstname
+    -   lastname
+    -   nickname (must be unique)
+    -   email (must be unique)
+    -   password (must be hashed)
+
+-   **Tags**:
+    -   ID
+    -   name
 
 Each hikes will have _at least_ one tag (e.g.: Hard, Rocks, Forest, Historical...).
 
@@ -119,7 +121,7 @@ All the visitors of the website can see this page.
 If a visitor wants to create an account to be able to create hikes, he has to subscribe in a specific page or in a modal.
 Send an email to the user when he completes his subscription.
 
-> I advise you to install & use [**PHPMailer**](https://github.com/PHPMailer/PHPMailer) instead of using the `mail()` function which is not very secure. 
+> I advise you to install & use [**PHPMailer**](https://github.com/PHPMailer/PHPMailer) instead of using the `mail()` function which is not very secure.
 
 #### User profile
 
@@ -188,18 +190,18 @@ You don't necessary have to call your website "The Hiking project", feel free to
 
 ### Deployement
 
-- Heroku, if you use your credits because of the Github student pack : https://www.heroku.com/github-students
-- Any free option like 000webhost
-- Any paid option
+-   Heroku, if you use your credits because of the Github student pack : https://www.heroku.com/github-students
+-   Any free option like 000webhost
+-   Any paid option
 
 ## Advices
 
-- Study all the project aspects, from frontend to backend, then make a mock-up (mobile first but the other views as well), some components can be reused later, do things seriously, it will save you a lot of time.
-- For the design, you can use a Bootstrap template for example.
-- Take time to think about your MVC architecture.
-- Use a Trello or a Github project to divide tasks.
-- Have SCRUM meetings regularly (What have you done, Have you difficulties, what will you do ?).
-- Divide your work in little challenges to achieve.
+-   Study all the project aspects, from frontend to backend, then make a mock-up (mobile first but the other views as well), some components can be reused later, do things seriously, it will save you a lot of time.
+-   For the design, you can use a Bootstrap template for example.
+-   Take time to think about your MVC architecture.
+-   Use a Trello or a Github project to divide tasks.
+-   Have SCRUM meetings regularly (What have you done, Have you difficulties, what will you do ?).
+-   Divide your work in little challenges to achieve.
 
 ## Remember...
 
