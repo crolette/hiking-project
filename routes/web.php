@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Hike;
+use App\Http\Controllers\Home;
 use Illuminate\Support\Facades\Route;
+use App\Models\Hikes;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello', function () {
-    return view('hello');
-});
+Route::get('/hello', [Home::class, 'home']);
+ Route::get('/hike/{id}', [Hike::class, 'hikeDetails']);   
+
