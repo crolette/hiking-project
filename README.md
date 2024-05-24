@@ -44,7 +44,7 @@ Create a database named `hiking` followed by a table called `hikes` and fill it 
     -   elevation_gain
     -   description
     -   created_at
-    -   updated_at (if needed)
+    -   updated_at (if needed) d
 
 Once done, you can retrieve some data from an existing website like [visandro](https://www.visorando.be/) or [wikiloc](https://www.wikiloc.com/).
 You have to collect at least 8 hikes and insert them the database. Each hike must fill in the fields.
