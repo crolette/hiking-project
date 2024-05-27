@@ -19,9 +19,11 @@ class Hikes extends Model
        }
 
        public static function getHikeById(int $id) {
-             $result = DB::table('hikes')->where('id', $id)->get();
+            $result = DB::table('hikes')->where('id', $id)->get();
             return $result;
        }
+
+       
 
 
 }
