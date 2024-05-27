@@ -13,8 +13,7 @@ class Home extends BaseController
 {
     public function home(): View
     {
-        $results = Hikes::getAllHikes();
-        return view('hello', ['results' => $results]);
+        return view('home');
     }
 
 }
