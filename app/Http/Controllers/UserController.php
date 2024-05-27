@@ -36,4 +36,8 @@ class UserController extends Controller
     public function changePassword() {
         return view('dashboard.change-password');
     }
+
+    public function adminDashboard() {
+        return view('dashboard.admin');
+    }
 }

@@ -1,6 +1,7 @@
 <header class=" w-full p-4 bg-blue-500">
  <nav class="flex justify-evenly text-white font-semibold items-center ">
     <a href="/" class="hover:underline hover:text-blue-200">Home</a>
+    <a href="/hikes" class="hover:underline hover:text-blue-200">All hikes</a>
     
     @if (session('username'))
     <a href="/logout" class="hover:underline hover:text-blue-200">Logout</a>

@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Hikes</title>
-</head>
+@section('title', 'Login')
+@section('meta_description', 'JCVD - Login')
 
-<body>
+@section('content')
+<main class="w-full bg-slate-100 p-4 dark:bg-slate-900">
+    <h1  class="text-2xl font-bold text-teal-500">Welcome <?php echo session('username') ?></h1>
     <h1>All Hikes</h1>
     <a href="/">Home</a>
     <ul>
@@ -18,6 +16,4 @@
         </li>
         @endforeach
     </ul>
-</body>
-
-</html>
+@endsection

@@ -23,12 +23,16 @@ Route::get('/', [Home::class, 'home'])->name('home');
 
 Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');
 Route::get('/hike/{id}', [Hike::class, 'hikeDetails'])->name('hike.details');
+
+
+// USERS
 Route::get('/login', [Authentication::class, 'show'])->name('login');   
 Route::post('/login', [Authentication::class, 'authenticate']);
 Route::get('/logout', [Authentication::class, 'logout']);
 Route::get('/register', [Register::class, 'register'])->name('register');   
 Route::post('/register', [Register::class, 'addUser']);   
 Route::get('/user-profile', [UserController::class, 'index']);
+Route::get('/admin', [UserController::class, 'adminDashboard']);
 Route::get('/user-profile/edit', [UserController::class, 'editProfile']);
 Route::get('/user-profile/change-password', [UserController::class, 'changePassword']);
 
