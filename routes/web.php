@@ -21,7 +21,8 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [Home::class, 'home'])->name('home');
 
-Route::get('/hike/{id}', [Hike::class, 'hikeDetails']);
+Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');
+Route::get('/hike/{id}', [Hike::class, 'hikeDetails'])->name('hike.details');
 Route::get('/login', [Authentication::class, 'show'])->name('login');   
 Route::post('/login', [Authentication::class, 'authenticate']);
 Route::get('/logout', [Authentication::class, 'logout']);
@@ -32,6 +33,3 @@ Route::get('/user-profile/edit', [UserController::class, 'editProfile']);
 Route::get('/user-profile/change-password', [UserController::class, 'changePassword']);
 
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
