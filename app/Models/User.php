@@ -23,6 +23,8 @@ class User extends Authenticatable
         'username',
         'email',
         'password',
+        'firstname',
+        'lastname'
     ];
 
     /**
@@ -60,7 +62,6 @@ class User extends Authenticatable
                     'lastname' => $validated['lastname'],
                     'username' => $validated['username'],
                     'password' => $password
-    
                 ]
                 );
         } catch(QueryException $e) {
