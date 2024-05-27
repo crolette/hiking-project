@@ -24,7 +24,6 @@ class Hikes extends Model
        }
 
 
-
 }
 
 ?>
