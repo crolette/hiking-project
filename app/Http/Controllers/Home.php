@@ -11,7 +11,7 @@ use Illuminate\View\View;
 
 class Home extends BaseController
 {
-    public function hikeDetails(): View
+    public function home(): View
     {
         $results = Hikes::getAllHikes();
         return view('hello', ['results' => $results]);
