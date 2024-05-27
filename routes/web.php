@@ -21,5 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', [Home::class, 'home']);
-Route::get('/hike/{id}', [Hike::class, 'hikeDetails']);   
-
+Route::get('/hike/{id}', [Hike::class, 'hikeDetails'])->name('hike.details');
+Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');
