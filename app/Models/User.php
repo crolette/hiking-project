@@ -21,10 +21,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'username',
-        'email',
-        'password',
         'firstname',
-        'lastname'
+        'lastname',
+        'email',
+        'password'
     ];
 
     /**
@@ -47,48 +47,48 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public static function createUser(array $validated, string $password) {
-        echo 'ADD USER';
-        echo '<br>';
-        var_dump($validated);
-        echo '<br>';
-        var_dump($password);
+    // public static function createUser(array $validated, string $password) {
+    //     echo 'ADD USER';
+    //     echo '<br>';
+    //     var_dump($validated);
+    //     echo '<br>';
+    //     var_dump($password);
 
-        try {
-            return $id = DB::table('users')->insertGetId(
-                [
-                    'email' => $validated['email'],
-                    'firstname' => $validated['firstname'],
-                    'lastname' => $validated['lastname'],
-                    'username' => $validated['username'],
-                    'password' => $password
-                ]
-                );
-        } catch(QueryException $e) {
-            dd($e->getMessage());
-        }
+    //     try {
+    //         return $id = DB::table('users')->insertGetId(
+    //             [
+    //                 'email' => $validated['email'],
+    //                 'firstname' => $validated['firstname'],
+    //                 'lastname' => $validated['lastname'],
+    //                 'username' => $validated['username'],
+    //                 'password' => $password
+    //             ]
+    //             );
+    //     } catch(QueryException $e) {
+    //         dd($e->getMessage());
+    //     }
 
-    }
+    // }
 
-    public static function getUserByUsername(string $username) {
+    // public static function getUserByUsername(string $username) {
 
-        try {
-            $result = DB::table('users')->where('username', $username)->get();
-            return json_decode($result, true);
+    //     try {
+    //         $result = DB::table('users')->where('username', $username)->get();
+    //         return json_decode($result, true);
 
-        } catch(QueryException $e) {
-            dd($e->getMessage());
-        }
-    }
+    //     } catch(QueryException $e) {
+    //         dd($e->getMessage());
+    //     }
+    // }
 
-       public static function getUserDetailsByUsername(string $username) {
+    //    public static function getUserDetailsByUsername(string $username) {
 
-        try {
-            $result = DB::table('users')->select('username', 'firstname', 'lastname', 'email', 'admin')->where('username', $username)->get();
-            return json_decode($result, true);
+    //     try {
+    //         $result = DB::table('users')->select('username', 'firstname', 'lastname', 'email', 'admin')->where('username', $username)->get();
+    //         return json_decode($result, true);
 
-        } catch(QueryException $e) {
-            dd($e->getMessage());
-        }
-    }
+    //     } catch(QueryException $e) {
+    //         dd($e->getMessage());
+    //     }
+    // }
 }
