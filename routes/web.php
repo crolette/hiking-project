@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Hike;
-use App\Http\Controllers\Home;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HikeController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,20 +17,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [Home::class, 'home'])->name("home");
 
-
-Route::get('/hikes', [Hike::class, 'index']);
-Route::get('/hikes/id={id}', [Hike::class, 'hikeDetails'])->name("hike.details");
-
-Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');
-Route::get('/hike/{id}', [Hike::class, 'hikeDetails'])->name('hike.details');
-Route::get('/addHike', [Hike::class, 'showCreateForm'])->name('hike.create');
-Route::post('/addHike', [Hike::class, 'createHike'])->name('hike.store');
+Route::get('/', [HomeController::class, 'index'])->name("home");
+Route::get('/hikes', [HikeController::class, 'index'])->name('hike.hikes');
+Route::get('/hikes/id={id}', [HikeController::class, 'hikeDetails'])->name("hike.details");
 
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('profile.dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 
@@ -37,7 +32,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/addHike', [HikeController::class, 'showCreateForm'])->name('hike.create');
+    Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
 });
 
 require __DIR__.'/auth.php';
-

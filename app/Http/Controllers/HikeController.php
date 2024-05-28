@@ -12,18 +12,18 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Carbon;
 
-class Hike extends BaseController
+class HikeController extends BaseController
 {
 
     public function hikeDetails(int $id): View
     {
         $hike = Hikes::getHikeById($id);
-        return view('hike_details', ['hike' => $hike]);
+        return view('hike.details', ['hike' => $hike]);
     }
 
     public function showCreateForm(): View
     {
-        return view('create_form');
+        return view('hike.create');
     }
 
     public function createHike(Request $request): RedirectResponse
@@ -47,6 +47,6 @@ class Hike extends BaseController
     public function index(): View
     {
         $hikes = Hikes::getAllHikes();
-        return view('index', ['hikes' => $hikes]);
+        return view('hike.hikes', ['hikes' => $hikes]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,20 +15,18 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('web');
     }
 
+    
     /**
-     * Show the application dashboard.
+     * index
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
-    public function index(Request $request)
+    public function index(): View
     {
-        $user = $request->user();
-        var_dump($user);
-        $user = Auth::user();
-        $user = "hello";
-        return view('home', ['user' => $user]);
+        return view('index');
     }
 }
+
