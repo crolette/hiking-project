@@ -1,11 +1,12 @@
-@extends('layout.layout')
-
 @section('title', 'Home')
 @section('meta_description', 'JCVD - Home')
 
 <x-app-layout>
-<main class="w-full bg-slate-100 p-4">
-    <h1  class="text-2xl font-bold text-teal-500">Welcome 2</h1>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('Welcome') }}
+        </h2>
+    </x-slot>
+    <p>Hello</p>    
 
-</main>
 </x-app-layout>

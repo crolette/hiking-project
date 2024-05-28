@@ -18,8 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Home::class, 'home'])->name("home");
 
-
-Route::get('/hikes', [Hike::class, 'index']);
 Route::get('/hikes/id={id}', [Hike::class, 'hikeDetails'])->name("hike.details");
 
 Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');

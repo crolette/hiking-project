@@ -10,7 +10,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
-
+          <title>@yield('title', 'JCVD')</title>
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
@@ -28,9 +28,10 @@
             @endif
 
             <!-- Page Content -->
-            <main>
+            <main class="w-full bg-red-100 p-4">
                 {{ $slot }}
             </main>
+             @include('layouts.footer')
         </div>
     </body>
 </html>

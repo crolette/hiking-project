@@ -1,16 +1,15 @@
-@extends('layout.layout')
 
 @section('title', 'Login')
 @section('meta_description', 'JCVD - Login')
 
-@section('content')
-
-@endsection
 <x-app-layout>
-<main class="w-full bg-slate-100 p-4">
-    <h1  class="text-2xl font-bold text-teal-500">Welcome <?php echo session('username') ?></h1>
-    <h1>All Hikes</h1>
-    <a href="/">Home</a>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('All hikes') }}
+        </h2>
+    </x-slot>
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
     <ul>
         @foreach ($hikes as $hike)
         <?php var_dump($hike)?>
@@ -20,5 +19,8 @@
         </li>
         @endforeach
     </ul>
-</main>
+</div>
+</div>
+
+
 </x-app-layout>
