@@ -15,12 +15,20 @@ error_reporting(E_ALL);
 
 class Hikes extends Model
 {
-     /*
-     protected $table = 'hikes';
-     protected $fillable = ['name', 'location', 'distance', 'duration', 'elevation_gain', 'description'];
 
-     For Eloquent models (laravel)
-     */
+     protected $table = 'hikes';
+     protected $fillable = [
+          'name',
+          'location',
+          'distance',
+          'duration',
+          'elevation_gain',
+          'description',
+          'created_at',
+          'updated_at',
+     ];
+
+
 
      public static function getAllHikes(): Collection
      {
