@@ -1,10 +1,11 @@
 @extends('layout.layout')
 
-@section('title', 'Login')
-@section('meta_description', 'JCVD - Login')
+@section('title', 'Home')
+@section('meta_description', 'JCVD - Home')
 
-@section('content')
-<main class="w-full bg-slate-100 p-4 dark:bg-slate-900">
-    <h1  class="text-2xl font-bold text-teal-500">Welcome <?php echo session('username') ?></h1>
+<x-app-layout>
+<main class="w-full bg-slate-100 p-4">
+    <h1  class="text-2xl font-bold text-teal-500">Welcome 2</h1>
+
 </main>
-@endsection
+</x-app-layout>
