@@ -18,12 +18,20 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Home::class, 'home'])->name("home");
 
+
 Route::get('/hikes', [Hike::class, 'index']);
 Route::get('/hikes/id={id}', [Hike::class, 'hikeDetails'])->name("hike.details");
+
+Route::get('/hikes', [Hike::class, 'index'])->name('hikes.index');
+Route::get('/hike/{id}', [Hike::class, 'hikeDetails'])->name('hike.details');
+Route::get('/addHike', [Hike::class, 'showCreateForm'])->name('hike.create');
+Route::post('/addHike', [Hike::class, 'createHike'])->name('hike.store');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,3 +40,4 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
