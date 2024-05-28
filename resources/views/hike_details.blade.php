@@ -16,6 +16,8 @@
             <th>duration</th>
             <th>elevation gain</th>
             <th>description</th>
+            <th>created at:</th>
+            <th>updated at:</th>
         </tr>
         <tr>
             <td>{{ $hike->name }}</td>
@@ -24,6 +26,9 @@
             <td>{{ $hike->duration }}</td>
             <td>{{ $hike->elevation_gain }}</td>
             <td>{{ $hike->description }}</td>
+            <td>{{ $hike->created_at }}</td>
+            <td>{{ $hike->updated_at }}</td>
+
         </tr>
     </table>
 

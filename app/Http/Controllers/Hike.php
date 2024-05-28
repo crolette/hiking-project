@@ -10,27 +10,38 @@ use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Carbon;
 
 class Hike extends BaseController
 {
+
     public function hikeDetails(int $id): View
     {
         $hike = Hikes::getHikeById($id);
         return view('hike_details', ['hike' => $hike]);
     }
 
+    public function showCreateForm(): View
+    {
+        return view('create_form');
+    }
+
     public function createHike(Request $request): RedirectResponse
     {
-        $id = Hikes::createHike(
-            $request->input('name'),
-            $request->input('location'),
-            $request->input('distance'),
-            $request->input('duration'),
-            $request->input('elevation_gain'),
-            $request->input('description')
-        );
+        $now = Carbon::now();
 
-        return redirect()->route('hike_details', ['id' => $id]);
+        $id = Hikes::create([
+            'name' => $request->input('name'),
+            'location' => $request->input('location'),
+            'distance' => $request->input('distance'),
+            'duration' => $request->input('duration'),
+            'elevation_gain' => $request->input('elevation_gain'),
+            'description' => $request->input('description'),
+            'created_at' => $now,
+            'updated_at' => $now
+        ]);
+
+        return redirect()->route('hike.details', ['id' => $id]);
     }
 
     public function index(): View
