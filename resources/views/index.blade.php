@@ -1,4 +1,4 @@
-@section('title', 'Home')
+@section('pageTitle', 'Home')
 @section('meta_description', 'JCVD - Home')
 
 <x-app-layout>

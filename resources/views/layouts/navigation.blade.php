@@ -7,9 +7,12 @@
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
-                <div class="shrink-0 flex items-center">
-                    <a href="{{ route('home') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-green-200" />
+                <div class="shrink-0 flex items-center justify-center text-white font-bold">
+                    <a href="{{ route('home') }}" class="flex items-center justify-center flex-col">
+                        <div>
+                            <x-application-logo class="block h-9 w-auto fill-current text-green-200" />
+                        </div>
+                        <p>JCVD</p>
                     </a>
                 </div>
 
