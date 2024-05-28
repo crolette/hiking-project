@@ -9,9 +9,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', '1');
-error_reporting(E_ALL);
 
 class Hikes extends Model
 {
