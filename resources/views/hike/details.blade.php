@@ -1,5 +1,5 @@
-@section('pageTitle', 'Hike Details')
-@section('meta_description', 'JCVD - Hike Details')
+@section('pageTitle', 'Hike Details - ' . $hike->name)
+@section('meta_description', 'JCVD - Hike Details - ' . $hike->name)
 
 <x-app-layout>
     <x-slot name="header">
