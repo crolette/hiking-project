@@ -1,10 +1,11 @@
-@section('pageTitle', 'All hikes')
-@section('meta_description', 'All hikes')
+@section('pageTitle', 'Hikes - ' . $tag)
+@section('meta_description', 'JCVD - Tag')
 
 <x-app-layout>
     <x-slot name="header">
-            {{ __('All hikes') }}
+            {{ __('Hikes filtered by ') }} {{$tag}}
     </x-slot>
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <ul>

@@ -29,6 +29,7 @@ class Hikes extends Model
 
      public static function getAllHikes(): Collection
      {
+          
           return self::all();
      }
 
@@ -51,4 +52,6 @@ class Hikes extends Model
 
           return $id;
      }
+
+
 }
