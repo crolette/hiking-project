@@ -1,4 +1,4 @@
-<div class="mx-3 mt-6 flex flex-row rounded-lg bg-white  shadow-secondary-1 dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
+<div class="mx-3 mt-6 flex flex-col rounded-lg bg-white  shadow-secondary-1 dark:bg-surface-dark dark:text-white sm:shrink-0 sm:grow sm:basis-0">
     <a href="{{ route('hike.details', ['id' => $hike->id]) }}">
       <img
         class="rounded-t-lg"
@@ -12,6 +12,7 @@
         <p class="mb-4 text-base text-emerald-600">
             {{ $hike->location}}
         </p>
+        @if(isset($tags))
         @foreach($tags as $tag)
             @if($hike->id === $tag->hike_id)
                 <a href="{{ route('hike.tags', ['tag' => $tag->name]) }}">
@@ -19,5 +20,6 @@
                 </a>
             @endif
         @endforeach
+        @endif
     </div>
   </div>

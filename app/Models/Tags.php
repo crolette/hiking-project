@@ -16,6 +16,7 @@ class Tags extends Model
 
         $tags = DB::table('tags')
                     ->select('*')
+                    ->distinct()
                     ->get();
         
         return $tags;
@@ -30,9 +31,9 @@ class Tags extends Model
 
         return json_decode($hikesTags);
 
-//         SELECT `hikes_tags`.`hike_id`, `tags`.`name`
-// FROM `hikes_tags` 
-// LEFT JOIN `tags` ON `hikes_tags`.`tag_id` = `tags`.`id`
+        // SELECT `hikes_tags`.`hike_id`, `tags`.`name`
+        // FROM `hikes_tags` 
+        // LEFT JOIN `tags` ON `hikes_tags`.`tag_id` = `tags`.`id`
     }
 
     public static function hikeTag(int $id) {
@@ -58,7 +59,7 @@ class Tags extends Model
             // LEFT JOIN `hikes_tags` ON `hikes_tags`.`hike_id` = `hikes`.`id`
             // LEFT JOIN `tags` ON `tags`.`id` = `hikes_tags`.`tag_id`
             // WHERE `tags`.`name` = "mountains"
-            
+
         return json_decode($hikesByTag);
     }
 }

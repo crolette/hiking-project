@@ -51,14 +51,17 @@ class HikeController extends BaseController
     {
         $hikes = Hikes::getAllHikes();
         $hikesTags = Tags::hikesTags();
-        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags]);
+        $tagsFilter = Tags::index();
+        
+        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags, 'filters' => $tagsFilter ]);
     }
 
     public function hikesByTag(string $tag): View {
         
         $hikesByTag = Tags::hikesByTag($tag);
         $tags = Tags::hikesTags();
-        // return view('hike.tags', ['hikes' => $hikes]);
         return view('hike.tags', ['hikes' => $hikesByTag, 'tag' => $tag, 'tags' => $tags]);
     }
+
+
 }

@@ -53,5 +53,25 @@ class Hikes extends Model
           return $id;
      }
 
+     public static function recentHikes(int $limit) {
+          return $recentHikes = DB::table('hikes')
+                         ->select('*')
+                         ->orderByDesc('created_at')
+                         ->limit($limit)
+                         ->get();
+
+
+
+          // return $recentHikes = DB::table('hikes as h')
+          //                     ->leftJoin('hikes as r', 'h.id', '=', 'r.id')
+          //                     ->join('hikes_tags as ht', 'h.id', '=', 'ht.hike_id')
+          //                     ->join('tags as t', 'ht.tag_id', '=', 't.id')
+          //                     ->whereRaw('(r.id IS NULL OR r.id = h.id)')
+          //                     ->select('h.*', 't.name as tag_name')
+          //                     ->orderBy('h.created_at', 'desc')
+          //                     ->take($limit)
+          //                     ->get();
+     
+    }
 
 }
