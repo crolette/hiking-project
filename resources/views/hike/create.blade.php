@@ -3,9 +3,7 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Create a new hike') }}
-        </h2>
     </x-slot>
     <form action="{{ route('hike.store') }}" method="POST">
         @csrf
