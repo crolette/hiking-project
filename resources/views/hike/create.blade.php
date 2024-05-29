@@ -3,7 +3,7 @@
 
 <x-app-layout>
     <x-slot name="header">
-            {{ __('Create a new hike') }}
+        {{ __('Create a new hike') }}
     </x-slot>
     <form action="{{ route('hike.store') }}" method="POST">
         @csrf
@@ -24,6 +24,16 @@
 
         <label for="description">Description:</label><br>
         <textarea id="description" name="description"></textarea><br>
+
+        <div>
+            @foreach($tags as $tag)
+            <div>
+                <input type="checkbox" id="{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                <label for="{{ $tag->id }}">{{ $tag->name }}</label>
+            </div>
+            @endforeach
+
+        </div>
 
         <button type="submit">Create Hike</button>
     </form>

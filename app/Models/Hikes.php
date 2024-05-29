@@ -23,6 +23,7 @@ class Hikes extends Model
           'description',
           'created_at',
           'updated_at',
+          'created_by'
      ];
 
 
@@ -36,19 +37,5 @@ class Hikes extends Model
      {
           $result = DB::table('hikes')->where('id', $id)->first();
           return $result;
-     }
-
-     public static function createHike(string $name, string $location, int $distance, string $duration, int $elevation_gain, string $description): int
-     {
-          $id = DB::table('hikes')->insertGetId([
-               'name' => $name,
-               'location' => $location,
-               'distance' => $distance,
-               'duration' => $duration,
-               'elevation_gain' => $elevation_gain,
-               'description' => $description,
-          ]);
-
-          return $id;
      }
 }
