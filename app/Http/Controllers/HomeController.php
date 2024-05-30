@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Hikes;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +27,8 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        return view('index');
+        $recentHikes = Hikes::recentHikes(3);
+        return view('index', ['recentHikes' => $recentHikes]);
     }
 }
 

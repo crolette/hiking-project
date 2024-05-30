@@ -8,7 +8,7 @@ namespace App\Http\Controllers;
 use App\Models\Hikes;
 use App\Models\Tag;
 use App\Models\HikeTag;
-
+use App\Models\Tags;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -24,7 +24,9 @@ class HikeController extends BaseController
     public function hikeDetails(int $id): View
     {
         $hike = Hikes::getHikeById($id);
-        return view('hike.details', ['hike' => $hike]);
+        $hikeTags = Tags::hikeTag($id);
+        
+        return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags]);
     }
 
     public function showCreateForm(Request $request): View
@@ -81,6 +83,18 @@ class HikeController extends BaseController
     public function index(): View
     {
         $hikes = Hikes::getAllHikes();
-        return view('hike.hikes', ['hikes' => $hikes]);
+        $hikesTags = Tags::hikesTags();
+        $tagsFilter = Tags::index();
+        
+        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags, 'filters' => $tagsFilter ]);
     }
+
+    public function hikesByTag(string $tag): View {
+        
+        $hikesByTag = Tags::hikesByTag($tag);
+        $tags = Tags::hikesTags();
+        return view('hike.tags', ['hikes' => $hikesByTag, 'tag' => $tag, 'tags' => $tags]);
+    }
+
+
 }
