@@ -37,4 +37,4 @@ Route::middleware('auth')->group(function () {
     Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
