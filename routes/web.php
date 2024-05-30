@@ -6,6 +6,7 @@ use App\Http\Controllers\HikeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,10 @@ Route::get('/hikes/id={id}', [HikeController::class, 'hikeDetails'])->name("hike
 Route::get('/hikes/tag={tag}', [HikeController::class, 'hikesByTag'])->name("hike.tags");
 
 
-Route::get('/dashboard', function () {
-    return view('profile.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 
 
 Route::middleware('auth')->group(function () {

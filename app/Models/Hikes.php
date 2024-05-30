@@ -30,7 +30,7 @@ class Hikes extends Model
 
      public static function getAllHikes(): Collection
      {
-          
+
           return self::all();
      }
 
@@ -55,12 +55,13 @@ class Hikes extends Model
           return $id;
      }
 
-     public static function recentHikes(int $limit) {
+     public static function recentHikes(int $limit)
+     {
           return $recentHikes = DB::table('hikes')
-                         ->select('*')
-                         ->orderByDesc('created_at')
-                         ->limit($limit)
-                         ->get();
+               ->select('*')
+               ->orderByDesc('created_at')
+               ->limit($limit)
+               ->get();
 
 
 
@@ -73,7 +74,6 @@ class Hikes extends Model
           //                     ->orderBy('h.created_at', 'desc')
           //                     ->take($limit)
           //                     ->get();
-     
-    }
 
+     }
 }
