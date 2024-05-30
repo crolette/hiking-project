@@ -14,7 +14,8 @@
                     <form class="max-w-sm mx-auto" method="POST" action="{{route('tag.store') }}">
                         @csrf
                         <div class="mb-5">
-                            <label for="tag" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">New tag name</label>
+                            <label for="user" class="block mb-2 text-sm font-medium text-gray-700 uppercase 
+                             dark:text-gray-400">New tag name</label>
                             <input type="text" id="tag" name="name" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light" value="{{old('name')}}" placeholder="nature" required />
                             <x-input-error :messages="$errors->get('name')" class="mt-2" />
                         </div>
