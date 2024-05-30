@@ -18,7 +18,6 @@ class HomeController extends Controller
     {
         $this->middleware('web');
     }
-
     
     /**
      * index
