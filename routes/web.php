@@ -37,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/addHike', [HikeController::class, 'showCreateForm'])->name('hike.create');
     Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
+    Route::delete('/dashboard{id}', [HikeController::class, 'destroy'])->name('hike.destroy');
+    Route::get('/dashboard/{id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
 });
 
 require __DIR__ . '/auth.php';

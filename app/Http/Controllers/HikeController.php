@@ -80,11 +80,20 @@ class HikeController extends BaseController
         return redirect()->route('hike.details', ['id' => $objectInserted->id]);
     }
 
-    public function destroy(request $request): void
+    public function destroy($id): RedirectResponse
     {
+        Hikes::find($id)->delete();
 
-        Hikes::destroy($id);
+        return redirect()->back()->with('success', 'Update successful!');
     }
+
+
+
+    public function edit(int $id)
+    {
+    }
+
+
 
     public function index(): View
     {

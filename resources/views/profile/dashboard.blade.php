@@ -1,6 +1,7 @@
 @section('pageTitle', 'Dashboard')
 @section('meta_description', 'JCVD - Dashboard')
 
+
 <x-app-layout>
     <x-slot name="header">
         {{ __('Dashboard') }}
@@ -11,13 +12,20 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
+                    @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                    @endif
                 </div>
+
                 <div>
                     <div class="text-gray-900 bg-gray-200">
                         <div class="p-4 flex">
                             <h2 class="text-3xl">
                                 Hikes
                             </h2>
+
                         </div>
                         <div class="px-3 py-4 flex justify-center">
                             <table class="w-full text-md bg-white shadow-md rounded mb-4">
@@ -40,8 +48,16 @@
                                             {{$hike->distance}}
                                         </td>
                                         <td class="p-3 px-5 flex justify-end">
-                                            <button type="button" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
-                                            <button type="button" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                            <form action="{{ route('hike.edit', ['id' => $hike->id]) }}" method="post">
+                                                @csrf
+                                                @method('PATCH')
+                                                <button type="submit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
+                                            </form>
+                                            <form action="{{ route('hike.destroy', ['id' => $hike->id]) }}" method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                     @endif
