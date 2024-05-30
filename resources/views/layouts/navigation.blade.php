@@ -26,7 +26,15 @@
                     <x-nav-link :href="route('hike.hikes')" :active="request()->routeIs('hike.hikes')">
                         {{ __('All Hikes') }}
                     </x-nav-link>
+                    
                 </div>
+                <?php if(Auth::user()->admin == 1) :?>
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                        <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
+                            {{ __('Admin panel') }}
+                        </x-nav-link>
+                    </div>
+                <?php endif;?>
                 
 
             </div>
@@ -38,10 +46,12 @@
                 <a href="{{route('register')}}">
                 <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Register</button>
                 </a>
+                
             </div>
 
 
                 <?php endif;?>
+                
             <?php if(Auth::user()) : ?>
             
 
@@ -59,11 +69,17 @@
                             </div>
                         </button>
                     </x-slot>
+                    
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('dashboard')">
                             {{ __('Dashboard') }}
                         </x-dropdown-link>
+                        <?php if(Auth::user()->admin == 1) :?>
+                            <x-dropdown-link :href="route('admin.dashboard')">
+                                {{ __('Admin') }}
+                            </x-dropdown-link>
+                        <?php endif;?>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>

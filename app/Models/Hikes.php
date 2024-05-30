@@ -40,6 +40,12 @@ class Hikes extends Model
           return $result;
      }
 
+     public static function getHikesByName(string $name): ?object
+     {
+          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%'. $name. '%')->get();
+          return $results;
+     }
+
 
      public static function createHike(string $name, string $location, int $distance, string $duration, int $elevation_gain, string $description): int
      {
@@ -63,6 +69,15 @@ class Hikes extends Model
                          ->get();
 
 
+     }
+
+     public static function randomHikes(int $limit) {
+          return $randomHikes = DB::table('hikes')
+                              ->select('*')
+                              ->inRandomOrder()
+                              ->limit($limit)
+                              ->get();
+     }
 
           // return $recentHikes = DB::table('hikes as h')
           //                     ->leftJoin('hikes as r', 'h.id', '=', 'r.id')
@@ -74,6 +89,6 @@ class Hikes extends Model
           //                     ->take($limit)
           //                     ->get();
      
-    }
+    
 
 }

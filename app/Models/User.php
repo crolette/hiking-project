@@ -24,7 +24,8 @@ class User extends Authenticatable
         'firstname',
         'lastname',
         'email',
-        'password'
+        'password',
+        'admin'
     ];
 
     /**
@@ -46,6 +47,45 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public static function searchByUsername(string $username) {
+
+        // SELECT * FROM users WHERE username LIKE CONCAT('%','test','%')
+        try {
+            $result = DB::table('users')->select('id', 'username', 'firstname', 'lastname', 'email', 'admin')->where('username', 'LIKE', '%'. $username. '%')->get();
+
+            return json_decode($result);
+
+        } catch(QueryException $e) {
+            dd($e->getMessage());
+        }
+
+    }
+
+    
+    public static function searchById(int $id) {
+
+        // SELECT * FROM users WHERE username LIKE CONCAT('%','test','%')
+        try {
+            $result = DB::table('users')->select('id', 'username', 'firstname', 'lastname', 'email', 'admin')->where('id',$id)->get();
+
+            return json_decode($result);
+
+        } catch(QueryException $e) {
+            dd($e->getMessage());
+        }
+    }
+
+    public static function makeAdmin(int $id) {
+        try {
+            DB::table('users')
+                ->where('id', $id)
+                ->update(['admin' => '1']);
+
+        } catch(QueryException $e) {
+            dd($e->getMessage());
+        }
+    }
 
     // public static function createUser(array $validated, string $password) {
     //     echo 'ADD USER';

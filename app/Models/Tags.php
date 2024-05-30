@@ -11,6 +11,11 @@ use Illuminate\Support\Facades\DB;
 class Tags extends Model
 {
     use HasFactory;
+    protected $table = 'tags';
+     protected $fillable = [
+        'name',
+    ];
+    public $timestamps = false;
 
     public static function index():Collection {
 
@@ -20,7 +25,6 @@ class Tags extends Model
                     ->get();
         
         return $tags;
-
     }
 
     public static function hikesTags() {

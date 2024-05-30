@@ -14,6 +14,11 @@
         @endforeach
     </div>
     <h2>Top hikes</h2>
+        <div class="flex">
+        @foreach($randomHikes as $hike)
+            <x-hike-card :hike='$hike' />
+        @endforeach
+    </div>
 </div>
 </div>
 
