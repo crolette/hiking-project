@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HikeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,10 +18,10 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
-
 Route::get('/', [HomeController::class, 'index'])->name("home");
 Route::get('/hikes', [HikeController::class, 'index'])->name('hike.hikes');
 Route::get('/hikes/id={id}', [HikeController::class, 'hikeDetails'])->name("hike.details");
+Route::get('/hikes/tag={tag}', [HikeController::class, 'hikesByTag'])->name("hike.tags");
 
 
 Route::get('/dashboard', function () {
