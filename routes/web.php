@@ -6,6 +6,7 @@ use App\Http\Controllers\HikeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagsController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,10 @@ Route::get('/hikes/id={id}', [HikeController::class, 'hikeDetails'])->name("hike
 Route::get('/hikes/tag={tag}', [HikeController::class, 'hikesByTag'])->name("hike.tags");
 
 
-Route::get('/dashboard', function () {
-    return view('profile.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+    ->middleware(['auth', 'verified'])
+    ->name('dashboard');
+
 
 
 Route::middleware('auth')->group(function () {
@@ -35,6 +37,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/addHike', [HikeController::class, 'showCreateForm'])->name('hike.create');
     Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
+    Route::delete('/dashboard{id}', [HikeController::class, 'destroy'])->name('hike.destroy');
+    Route::get('/dashboard/{id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
 });
 
 require __DIR__ . '/auth.php';

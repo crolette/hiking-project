@@ -25,7 +25,7 @@ class HikeController extends BaseController
     {
         $hike = Hikes::getHikeById($id);
         $hikeTags = Tags::hikeTag($id);
-        
+
         return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags]);
     }
 
@@ -80,21 +80,35 @@ class HikeController extends BaseController
         return redirect()->route('hike.details', ['id' => $objectInserted->id]);
     }
 
+    public function destroy($id): RedirectResponse
+    {
+        Hikes::find($id)->delete();
+
+        return redirect()->back()->with('success', 'Update successful!');
+    }
+
+
+
+    public function edit(int $id)
+    {
+    }
+
+
+
     public function index(): View
     {
         $hikes = Hikes::getAllHikes();
         $hikesTags = Tags::hikesTags();
         $tagsFilter = Tags::index();
-        
-        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags, 'filters' => $tagsFilter ]);
+
+        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags, 'filters' => $tagsFilter]);
     }
 
-    public function hikesByTag(string $tag): View {
-        
+    public function hikesByTag(string $tag): View
+    {
+
         $hikesByTag = Tags::hikesByTag($tag);
         $tags = Tags::hikesTags();
         return view('hike.tags', ['hikes' => $hikesByTag, 'tag' => $tag, 'tags' => $tags]);
     }
-
-
 }
