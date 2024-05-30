@@ -90,5 +90,4 @@ class Hikes extends Model
           //                     ->take($limit)
           //                     ->get();
 
-     }
-
+}
