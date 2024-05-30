@@ -27,6 +27,12 @@ class Tags extends Model
         return $tags;
     }
 
+    public static function getTagsByName(string $name): ?object
+     {
+          $results = DB::table('tags')->select('id', 'name')->where('name', 'LIKE', '%'. $name. '%')->get();
+          return $results;
+     }
+
     public static function hikesTags() {
         $hikesTags = DB::table('hikes_tags')
                         ->join('tags', 'hikes_tags.tag_id', '=', 'tags.id')

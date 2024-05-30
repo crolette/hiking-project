@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hikes;
+use App\Models\Tags;
 use App\Models\User;
 use Illuminate\Contracts\View\View as View;
 use Illuminate\Http\RedirectResponse;
@@ -33,7 +34,18 @@ class AdminController extends Controller
         return view('admin.search-users', ['users' => $users]);
     }
 
+    public function searchTags():View {
+        return view('admin.edit-tags');
+    }
 
+    public function displayTags(Request $request):View {
+        
+        var_dump($request->input('name'));
+
+        $tags = Tags::getTagsByName($request->input('name'));
+
+        return view('admin.edit-tags', ['tags' => $tags]);
+    }
 
     public function editUser(Request $request, int $id): View {
 
@@ -55,8 +67,6 @@ class AdminController extends Controller
                     User::makeAdmin($id);               
                 }
         }
-        
-
         return view('admin.dashboard');
 
     }
@@ -67,8 +77,6 @@ class AdminController extends Controller
     }
 
     public function displayHikes(Request $request):View {
-        
-
         $hikes = Hikes::getHikesByName($request->input('hike'));
 
         return view('admin.search-hikes', ['hikes' => $hikes]);
