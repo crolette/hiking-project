@@ -33,6 +33,12 @@ class Tags extends Model
           return $results;
      }
 
+     public static function getTagById(int $id): ?object
+     {
+          $results = DB::table('tags')->select('id', 'name')->where('id', $id)->get();
+          return $results;
+     }
+
     public static function hikesTags() {
         $hikesTags = DB::table('hikes_tags')
                         ->join('tags', 'hikes_tags.tag_id', '=', 'tags.id')

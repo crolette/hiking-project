@@ -36,7 +36,7 @@
                 
                 <div class="p-6 text-gray-900">
                     
-                    <form class="max-w-sm mx-auto" method="POST" action="{{route('admin.search-users') }}">
+                    <form class="max-w-sm mx-auto" method="POST" action="{{route('admin.search-tags') }}">
                         @csrf
                         <div class="mb-5">
                             <label for="user" class="block mb-2 text-sm font-medium text-gray-700 uppercase 
@@ -61,8 +61,8 @@
                             <th scope="col" class="px-6 py-3">
                                 Tag
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
+                            <th scope="col" class="px-6 py-3" colspan="2">
+                                Actions
                             </th>
                         </tr>
                     </thead>
@@ -72,9 +72,12 @@
                             <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                 {{$tag->name}}
                             </th>
+                            <td class="px-6 py-4">
+                                <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                            </td>
                             
                             <td class="px-6 py-4">
-                                <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                <a href="{{route('admin.edit-tag', ['id' => $user->id, 'delete' => 'yes'])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
                             </td>
                         </tr>
                         @endforeach

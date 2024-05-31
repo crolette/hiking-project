@@ -23,8 +23,15 @@ Route::middleware('auth', 'admin:1')->group(function () {
      Route::get('/admin/edit-hike/id={id}', [AdminController::class, 'editHike'])->name('admin.edit-hike');
     Route::post('/admin/edit-hike/id={id}', [AdminController::class, 'editHike'])->name('admin.edit-hike');
 
+
+
     Route::get('/admin/search-tags', [AdminController::class, 'searchTags'])->name('admin.search-tags');
-    Route::post('/admin/search-users', [AdminController::class, 'displayTags'])->name('admin.display-users');
+    Route::post('/admin/search-tags', [AdminController::class, 'displayTags'])->name('admin.display-tags');
+
+     Route::get('/admin/edit-tag/id={id}', [AdminController::class, 'editTag'])->name('admin.edit-tag');
+    Route::post('/admin/edit-tag/id={id}', [AdminController::class, 'editTag'])->name('admin.edit-tag');
+
+
 
 });
 
