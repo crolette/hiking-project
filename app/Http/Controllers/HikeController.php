@@ -16,6 +16,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Carbon;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 
 class HikeController extends BaseController
@@ -23,10 +24,11 @@ class HikeController extends BaseController
 
     public function hikeDetails(int $id): View
     {
+        $userId = Auth::user()->id;
         $hike = Hikes::getHikeById($id);
         $hikeTags = Tags::hikeTag($id);
 
-        return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags]);
+        return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags, 'userId' => $userId]);
     }
 
     public function showCreateForm(Request $request): View
