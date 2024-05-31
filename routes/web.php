@@ -40,7 +40,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/addHike', [HikeController::class, 'showCreateForm'])->name('hike.create');
     Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
     Route::delete('/dashboard{id}', [HikeController::class, 'destroy'])->name('hike.destroy');
-    Route::get('/dashboard/{id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
+    Route::get('/dashboard/id={id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
 });
 
 require __DIR__ . '/auth.php';
