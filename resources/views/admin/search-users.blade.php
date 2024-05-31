@@ -1,9 +1,9 @@
-@section('pageTitle', 'Admin panel - Search users')
-@section('meta_description', 'JCVD - Admin panel - Search users')
+@section('pageTitle', 'Admin panel - Edit users')
+@section('meta_description', 'JCVD - Admin panel - Edit users')
 
 <x-app-layout>
     <x-slot name="header">
-            {{ __('Admin - Search users') }}
+            {{ __('Admin - Edit users') }}
     </x-slot>
 
     <div class="py-12">

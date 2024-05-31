@@ -78,4 +78,6 @@ class Tags extends Model
 
         return json_decode($hikesByTag);
     }
+
+
 }
