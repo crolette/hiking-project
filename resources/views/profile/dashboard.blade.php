@@ -48,9 +48,7 @@
                                             {{$hike->distance}}
                                         </td>
                                         <td class="p-3 px-5 flex justify-end">
-                                            <form action="{{ route('hike.edit', ['id' => $hike->id]) }}" method="post">
-                                                @csrf
-                                                @method('PATCH')
+                                            <form action="{{ route('hike.edit', ['id' => $hike->id]) }}" method="get">
                                                 <button type="submit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
                                             </form>
                                             <form action="{{ route('hike.destroy', ['id' => $hike->id]) }}" method="post">

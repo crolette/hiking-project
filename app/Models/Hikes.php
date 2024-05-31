@@ -40,9 +40,18 @@ class Hikes extends Model
           return $result;
      }
 
+     public static function getHikesByUserId(int $userId): Collection
+     {
+          $specificRows = DB::table('hikes')->where('created_by', '=', $userId)->get();
+
+          return $specificRows;
+     }
+
+
+
      public static function getHikesByName(string $name): ?object
      {
-          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%'. $name. '%')->get();
+          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%' . $name . '%')->get();
           return $results;
      }
 
@@ -78,17 +87,17 @@ class Hikes extends Model
           //                     ->orderBy('h.created_at', 'desc')
           //                     ->take($limit)
           //                     ->get();
-          
+
      }
 
-     public static function randomHikes(int $limit) {
+     public static function randomHikes(int $limit)
+     {
           return $randomHikes = DB::table('hikes')
-                              ->select('*')
-                              ->inRandomOrder()
-                              ->limit($limit)
-                              ->get();
+               ->select('*')
+               ->inRandomOrder()
+               ->limit($limit)
+               ->get();
      }
 
-         
 
 }
