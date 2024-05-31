@@ -12,8 +12,8 @@ class DashboardController extends Controller
 {
     public function index(): view
     {
-        $hikes = Hikes::getAllHikes();
         $userID = Auth::user()->id;
+        $hikes = Hikes::getHikesByUserId($userID);
 
         return view('profile.dashboard', ['hikes' => $hikes, 'userId' => $userID]);
     }

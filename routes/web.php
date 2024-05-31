@@ -30,17 +30,15 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 
-
-
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/addHike', [HikeController::class, 'showCreateForm'])->name('hike.create');
     Route::post('/addHike', [HikeController::class, 'createHike'])->name('hike.store');
-    Route::delete('/dashboard{id}', [HikeController::class, 'destroy'])->name('hike.destroy');
-    Route::get('/dashboard/id={id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
+    Route::delete('/dashboard/{id}', [HikeController::class, 'destroy'])->name('hike.destroy');
+    Route::get('/dashboard/{id}/edit', [HikeController::class, 'edit'])->name('hike.edit');
+    Route::patch('/dashboard/{id}/patch', [HikeController::class, 'update'])->name('hike.update');
 });
 
 require __DIR__ . '/auth.php';

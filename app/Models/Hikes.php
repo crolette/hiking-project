@@ -40,9 +40,18 @@ class Hikes extends Model
           return $result;
      }
 
+     public static function getHikesByUserId(int $userId): Collection
+     {
+          $specificRows = DB::table('hikes')->where('created_by', '=', $userId)->get();
+
+          return $specificRows;
+     }
+
+
+
      public static function getHikesByName(string $name): ?object
      {
-          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%'. $name. '%')->get();
+          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%' . $name . '%')->get();
           return $results;
      }
 
@@ -68,26 +77,25 @@ class Hikes extends Model
                ->orderByDesc('created_at')
                ->limit($limit)
                ->get();
-
-
      }
 
-     public static function randomHikes(int $limit) {
+     public static function randomHikes(int $limit)
+     {
           return $randomHikes = DB::table('hikes')
-                              ->select('*')
-                              ->inRandomOrder()
-                              ->limit($limit)
-                              ->get();
+               ->select('*')
+               ->inRandomOrder()
+               ->limit($limit)
+               ->get();
      }
 
-          // return $recentHikes = DB::table('hikes as h')
-          //                     ->leftJoin('hikes as r', 'h.id', '=', 'r.id')
-          //                     ->join('hikes_tags as ht', 'h.id', '=', 'ht.hike_id')
-          //                     ->join('tags as t', 'ht.tag_id', '=', 't.id')
-          //                     ->whereRaw('(r.id IS NULL OR r.id = h.id)')
-          //                     ->select('h.*', 't.name as tag_name')
-          //                     ->orderBy('h.created_at', 'desc')
-          //                     ->take($limit)
-          //                     ->get();
+     // return $recentHikes = DB::table('hikes as h')
+     //                     ->leftJoin('hikes as r', 'h.id', '=', 'r.id')
+     //                     ->join('hikes_tags as ht', 'h.id', '=', 'ht.hike_id')
+     //                     ->join('tags as t', 'ht.tag_id', '=', 't.id')
+     //                     ->whereRaw('(r.id IS NULL OR r.id = h.id)')
+     //                     ->select('h.*', 't.name as tag_name')
+     //                     ->orderBy('h.created_at', 'desc')
+     //                     ->take($limit)
+     //                     ->get();
 
 }

@@ -89,9 +89,36 @@ class HikeController extends BaseController
 
 
 
-    public function edit()
+    public function edit($id): View
     {
-        return view('hike.edit');
+        $hike = Hikes::getHikeById($id);
+
+        return view('hike.edit', ['hike' => $hike, 'id' => $id]);
+    }
+
+    public function update(request $request, $id)
+    {
+        $validatedData = $request->validate([
+            'name' => 'required|string',
+            'location' => 'required|string',
+            'distance' => 'required|numeric',
+            'duration' => 'required|string',
+            'elevation_gain' => 'required|numeric',
+            'description' => 'nullable|string',
+        ]);
+
+        $hike = Hikes::find($id);
+
+        $hike->update([
+            'name' => $validatedData['name'],
+            'location' => $validatedData['location'],
+            'distance' => $validatedData['distance'],
+            'duration' => $validatedData['duration'],
+            'elevation_gain' => $validatedData['elevation_gain'],
+            'description' => $validatedData['description'] ?? $hike->description,
+        ]);
+
+        return redirect()->route('dashboard')->with('success', 'Hike updated successfully.');
     }
 
 
