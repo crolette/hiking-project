@@ -25,7 +25,7 @@ class TagsController extends Controller
             'name' => $request->input("name"),
         ]);
 
-        return redirect()->route('admin.add-tag');
+        return redirect()->route('admin.edit-tags');
 
     }
 
