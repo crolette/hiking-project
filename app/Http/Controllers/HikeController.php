@@ -24,11 +24,10 @@ class HikeController extends BaseController
 
     public function hikeDetails(int $id): View
     {
-        $userId = Auth::user()->id;
         $hike = Hikes::getHikeById($id);
         $hikeTags = Tags::hikeTag($id);
 
-        return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags, 'userId' => $userId]);
+        return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags]);
     }
 
     public function showCreateForm(Request $request): View
@@ -82,7 +81,7 @@ class HikeController extends BaseController
         return redirect()->route('hike.details', ['id' => $objectInserted->id]);
     }
 
-    public function destroy($id): RedirectResponse
+    public function destroy(int $id): RedirectResponse
     {
         Hikes::find($id)->delete();
 
@@ -91,7 +90,7 @@ class HikeController extends BaseController
 
 
 
-    public function edit($id): View
+    public function edit(int $id): View
     {
         $hike = Hikes::getHikeById($id);
 
