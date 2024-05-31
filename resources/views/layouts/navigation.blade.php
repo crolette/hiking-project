@@ -28,7 +28,8 @@
                     </x-nav-link>
                     
                 </div>
-                <?php if(Auth::user()->admin == 1) :?>
+               
+                 <?php if(Auth::user() && Auth::user()->admin === 1) :?>
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Admin panel') }}

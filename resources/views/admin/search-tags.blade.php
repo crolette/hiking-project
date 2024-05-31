@@ -77,7 +77,7 @@
                             </td>
                             
                             <td class="px-6 py-4">
-                                <a href="{{route('admin.edit-tag', ['id' => $user->id, 'delete' => 'yes'])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                <a href="{{route('admin.edit-tag', ['id' => $tag->id, 'delete' => 'yes'])}}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
                             </td>
                         </tr>
                         @endforeach

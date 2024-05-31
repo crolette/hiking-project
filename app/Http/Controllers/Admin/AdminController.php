@@ -75,7 +75,7 @@ class AdminController extends Controller
     public function editTag(Request $request, int $id): View {
 
         if($request->isMethod('get')) {
-            $tag = Tag::getTagById($id);
+            $tag = Tags::getTagById($id);
             $parameters=$request->query();
             
             return view('admin.display-tag', ['tag' => $tag[0], 'parameters' => $parameters]);
@@ -84,12 +84,10 @@ class AdminController extends Controller
         if($request->isMethod('post')) {
             $parameters=$request->query();
             if(isset($parameters['delete'])) {
-                if($id !== Auth::id()) {
-                    User::destroy($id);
-                } 
+                    Tags::destroy($id);
             }
-            if(isset($parameters['make-admin'])) {
-                    User::makeAdmin($id);               
+            if(isset($parameters['edit'])) {
+                                  
                 }
         }
         return view('admin.dashboard');
