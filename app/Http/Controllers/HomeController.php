@@ -26,8 +26,8 @@ class HomeController extends Controller
      */
     public function index(): View
     {
-        $recentHikes = Hikes::recentHikes(3);
-        $randomHikes = Hikes::randomHikes(3);
+        $recentHikes = Hikes::recentHikes(6);
+        $randomHikes = Hikes::randomHikes(6);
         return view('index', ['recentHikes' => $recentHikes, 'randomHikes' => $randomHikes]);
     }
 }

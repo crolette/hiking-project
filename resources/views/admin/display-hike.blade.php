@@ -32,12 +32,7 @@
                             <th scope="col" class="px-6 py-3">
                                 Elevation
                             </th>
-                            <th scope="col" class="px-6 py-3">
-                                Edit
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Delete
-                            </th>
+
                         </tr>
                     </thead>
                     <tbody>
@@ -58,12 +53,6 @@
                             <td class="px-6 py-4">
                                 {{$hike->elevation_gain}}
                             </td>
-                            <td class="px-6 py-4">
-                                <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            </td>
-                            <td class="px-6 py-4">
-                                <a href="" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
-                            </td>
                         </tr>
                     </div>
                 </tbody>
@@ -74,8 +63,8 @@
             @if(isset($parameters['delete']))
             <form action="" method="post">
                 @csrf
-                <p>Are you sure you want delete this user ? </p>
-              <button type="submit">Yes</button>  
+                <p>Are you sure you want delete this hike ? </p>
+              <x-danger-button>Yes</x-danger-button>
             </form>
             @endif
         </div>

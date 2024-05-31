@@ -75,10 +75,10 @@ class AdminController extends Controller
     public function editTag(Request $request, int $id): View {
 
         if($request->isMethod('get')) {
-            $tag = Tags::getTagById($id);
+            $tag = Tags::find($id);
             $parameters=$request->query();
             
-            return view('admin.display-tag', ['tag' => $tag[0], 'parameters' => $parameters]);
+            return view('admin.display-tag', ['tag' => $tag, 'parameters' => $parameters]);
         }
 
         if($request->isMethod('post')) {
@@ -87,10 +87,12 @@ class AdminController extends Controller
                     Tags::destroy($id);
             }
             if(isset($parameters['edit'])) {
-                                  
+                $tag = Tags::find($id);
+                   $tag->name = $request->input('name');   
+                   $tag->save();          
                 }
         }
-        return view('admin.dashboard');
+        return view('admin.search-tags');
 
     }
     
@@ -106,7 +108,7 @@ class AdminController extends Controller
         return view('admin.search-hikes', ['hikes' => $hikes]);
     }
 
-        public function editHike(Request $request, int $id): View {
+    public function editHike(Request $request, int $id): View {
 
         if($request->isMethod('get')) {
             $hike = Hikes::getHikeById($id);
@@ -126,7 +128,7 @@ class AdminController extends Controller
         }
         
 
-        return view('admin.dashboard');
+        return view('admin.search-hikes');
 
     }
 }

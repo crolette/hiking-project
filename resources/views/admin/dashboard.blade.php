@@ -3,7 +3,7 @@
 
 <x-app-layout>
     <x-slot name="header">
-            {{ __('Admin') }}
+            {{ __('Admin Dashboard') }}
     </x-slot>
 
     <div class="py-12">
