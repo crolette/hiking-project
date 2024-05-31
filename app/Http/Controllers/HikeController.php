@@ -89,8 +89,9 @@ class HikeController extends BaseController
 
 
 
-    public function edit(int $id)
+    public function edit()
     {
+        return view('hike.edit');
     }
 
 
