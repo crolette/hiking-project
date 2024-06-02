@@ -61,7 +61,7 @@ use Illuminate\Support\Facades\Auth;
 
           <div class="mb-5">
       <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
-      <textarea type="text" id="description" name="description" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"  value="{{ $hike->description }}"></textarea>
+      <textarea type="text" id="description" name="description" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">{{ $hike->description }}</textarea>
   </div>
         
 
@@ -81,7 +81,7 @@ use Illuminate\Support\Facades\Auth;
 
         
 
-        <button type='submit' class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Create hike</button>
+        <button type='submit' class="items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">Save hike</button>
     </form>
 </div>
 </div>

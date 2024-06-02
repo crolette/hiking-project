@@ -102,15 +102,6 @@ class HikeController extends BaseController
         return redirect()->back()->with('success', 'Update successful!');
     }
 
-
-
-   
-
-    
-
-
-
-
     // public function hikesByTag(): View
     // {
         

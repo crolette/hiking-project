@@ -33,6 +33,12 @@ class Tags extends Model
         return $tags;
     }
 
+    public static function getTagsIds(): collection
+     {
+          $results = DB::table('tags')->select('id')->get();
+          return $results;
+     }
+
     public static function getTagsByName(string $name): ?object
      {
           $results = DB::table('tags')->select('id', 'name')->where('name', 'LIKE', '%'. $name. '%')->get();
