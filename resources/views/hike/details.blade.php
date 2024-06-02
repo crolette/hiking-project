@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
             <x-hike-details :hike='$hike' :tags='$tags' />
 
             
-            <?php if((Auth::user() && $hike->created_by === Auth::user()->id) || (Auth::user() && Auth::user()->admin === 1)) : ?>
+            <?php if((Auth::user() && $hike->user_id === Auth::user()->id) || (Auth::user() && Auth::user()->admin === 1)) : ?>
                 <form action="{{ route('hike.edit', ['id' => $hike->id]) }}" method="get">
                 @csrf
                 <button type="submit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>

@@ -39,7 +39,7 @@
 
                                 <tbody>
                                     @foreach ($hikes as $hike)
-                                    @if ($userId == $hike->created_by)
+                                    @if ($userId == $hike->user_id)
                                     <tr class="border-b hover:bg-orange-100 bg-gray-100">
                                         <td class="p-3 px-5">{{$hike->name}}</td>
                                         <td class="p-3 px-5">{{$hike->location}}</td>

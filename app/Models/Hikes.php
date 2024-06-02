@@ -21,10 +21,11 @@ class Hikes extends Model
           'distance',
           'duration',
           'elevation_gain',
+          'round_trip',
           'description',
           'created_at',
           'updated_at',
-          'created_by'
+          'user_id'
      ];
 
 
@@ -36,13 +37,19 @@ class Hikes extends Model
 
      public static function getHikeById(int $id): ?object
      {
-          $result = DB::table('hikes')->where('id', $id)->first();
+          $result = DB::table('hikes')
+                         ->where('id', $id)
+                         ->get()
+                         ->first();
+                         
           return $result;
      }
 
      public static function getHikesByUserId(int $userId): Collection
      {
-          $specificRows = DB::table('hikes')->where('created_by', '=', $userId)->get();
+          $specificRows = DB::table('hikes')
+                              ->where('user_id', '=', $userId)
+                              ->get();
 
           return $specificRows;
      }
@@ -51,7 +58,10 @@ class Hikes extends Model
 
      public static function getHikesByName(string $name): ?object
      {
-          $results = DB::table('hikes')->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')->where('name', 'LIKE', '%' . $name . '%')->get();
+          $results = DB::table('hikes')
+                         ->select('id', 'name', 'location', 'distance', 'duration', 'elevation_gain')
+                         ->where('name', 'LIKE', '%' . $name . '%')
+                         ->get();
           return $results;
      }
 
@@ -99,5 +109,22 @@ class Hikes extends Model
                ->get();
      }
 
+
+     public static function hikesByTag(string $tag) {
+        $hikesByTag = DB::table('hikes')
+                        ->join('hikes_tags', 'hikes_tags.hike_id', '=', 'hikes.id')
+                        ->join('tags', 'tags.id', '=', 'hikes_tags.tag_id')
+                        ->select('hikes.*')
+                        ->where('tags.name', '=', $tag)
+                        ->get();
+
+            // SELECT `hikes`.*, `tags`.*
+            // FROM `hikes` 
+            // LEFT JOIN `hikes_tags` ON `hikes_tags`.`hike_id` = `hikes`.`id`
+            // LEFT JOIN `tags` ON `tags`.`id` = `hikes_tags`.`tag_id`
+            // WHERE `tags`.`name` = "mountains"
+
+        return $hikesByTag;
+    }
 
 }

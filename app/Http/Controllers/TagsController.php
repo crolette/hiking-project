@@ -23,9 +23,10 @@ class TagsController extends Controller
 
         Tags::create([
             'name' => $request->input("name"),
+            'user_id' =>  $request->user()->id
         ]);
 
-        return redirect()->route('admin.edit-tags');
+        return redirect()->route('admin.search-tags');
 
     }
 

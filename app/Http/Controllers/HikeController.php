@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 // use Illuminate\Foundation\Validation\ValidatesRequests;
 
 use App\Models\Hikes;
-use App\Models\Tag;
 use App\Models\HikeTag;
 use App\Models\Tags;
 use Illuminate\Routing\Controller as BaseController;
@@ -22,21 +21,39 @@ use Illuminate\Support\Facades\Auth;
 class HikeController extends BaseController
 {
 
+    
+    public function index(string $tag = null): View
+    {
+        if(isset($tag)) {
+            $hikes = Hikes::hikesByTag($tag);
+        } else {
+            $hikes = Hikes::getAllHikes();
+        }
+
+        $hikesTags = Tags::hikesTags();
+        $tagsFilter = Tags::index();
+
+        return view('hike.hikes', ['hikes' => $hikes, 'tag' => $tag, 'tags' => $hikesTags, 'filters' => $tagsFilter]);
+    }
+
+
     public function hikeDetails(int $id): View
     {
         $hike = Hikes::getHikeById($id);
-        $hikeTags = Tags::hikeTag($id);
+        $hikeTags = Tags::hikeTag($id);   
+        
+        
 
         return view('hike.details', ['hike' => $hike, 'tags' => $hikeTags]);
     }
 
-    public function showCreateForm(Request $request): View
+    public function create(Request $request): View
     {
-        $tags = Tag::getTags();
+        $tags = Tags::getTags();
         return view('hike.create', ['tags' => $tags]);
     }
 
-    public function createHike(Request $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
 
         $validator = Validator::make($request->all(), [
@@ -51,9 +68,7 @@ class HikeController extends BaseController
             throw new ValidationException($validator);
         }
 
-        $now = Carbon::now();
-
-
+        // dd($request->input('distance'));
 
         $objectInserted = Hikes::create([
             'name' => $request->input('name'),
@@ -62,9 +77,8 @@ class HikeController extends BaseController
             'duration' => $request->input('duration'),
             'elevation_gain' => $request->input('elevation_gain'),
             'description' => $request->input('description'),
-            'created_at' => $now,
-            'updated_at' => $now,
-            'created_by' => $request->user()->id
+            'round_trip' =>$request->input('round_trip'),
+            'user_id' => $request->user()->id
         ]);
 
         $tags = $request->input('tags');
@@ -90,54 +104,17 @@ class HikeController extends BaseController
 
 
 
-    public function edit(int $id): View
-    {
-        $hike = Hikes::getHikeById($id);
+   
 
-        return view('hike.edit', ['hike' => $hike, 'id' => $id]);
-    }
-
-    public function update(request $request, $id)
-    {
-        $validatedData = $request->validate([
-            'name' => 'required|string',
-            'location' => 'required|string',
-            'distance' => 'required|numeric',
-            'duration' => 'required|string',
-            'elevation_gain' => 'required|numeric',
-            'description' => 'nullable|string',
-        ]);
-
-        $hike = Hikes::find($id);
-
-        $hike->update([
-            'name' => $validatedData['name'],
-            'location' => $validatedData['location'],
-            'distance' => $validatedData['distance'],
-            'duration' => $validatedData['duration'],
-            'elevation_gain' => $validatedData['elevation_gain'],
-            'description' => $validatedData['description'] ?? $hike->description,
-        ]);
-
-        return redirect()->route('dashboard')->with('success', 'Hike updated successfully.');
-    }
+    
 
 
 
-    public function index(): View
-    {
-        $hikes = Hikes::getAllHikes();
-        $hikesTags = Tags::hikesTags();
-        $tagsFilter = Tags::index();
 
-        return view('hike.hikes', ['hikes' => $hikes, 'tags' => $hikesTags, 'filters' => $tagsFilter]);
-    }
-
-    public function hikesByTag(string $tag): View
-    {
-
-        $hikesByTag = Tags::hikesByTag($tag);
-        $tags = Tags::hikesTags();
-        return view('hike.tags', ['hikes' => $hikesByTag, 'tag' => $tag, 'tags' => $tags]);
-    }
+    // public function hikesByTag(): View
+    // {
+        
+    //     $tags = Tags::hikesTags();
+    //     return view('hike.hikes', ['hikes' => $hikesByTag, 'tag' => $tag, 'tags' => $tags]);
+    // }
 }

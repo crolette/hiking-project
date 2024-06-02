@@ -3,7 +3,7 @@
 
 <nav x-data="{ open: false }" class="bg-emerald-900 border-b border-gray-100">
     <!-- Primary Navigation Menu -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
         <div class="flex justify-between h-16">
             <div class="flex">
                 <!-- Logo -->
@@ -17,12 +17,12 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Home') }}
                     </x-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
                     <x-nav-link :href="route('hike.hikes')" :active="request()->routeIs('hike.hikes')">
                         {{ __('All Hikes') }}
                     </x-nav-link>
@@ -30,7 +30,7 @@
                 </div>
                
                  <?php if(Auth::user() && Auth::user()->admin === 1) :?>
-                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex items-center">
                         <x-nav-link :href="route('admin.dashboard')" :active="request()->routeIs('admin.dashboard')">
                             {{ __('Admin panel') }}
                         </x-nav-link>

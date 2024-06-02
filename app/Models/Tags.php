@@ -11,11 +11,17 @@ use Illuminate\Support\Facades\DB;
 class Tags extends Model
 {
     use HasFactory;
-    protected $table = 'tags';
      protected $fillable = [
         'name',
+          'created_at',
+          'updated_at',
+          'user_id'
     ];
-    public $timestamps = false;
+
+     public static function getTags(): collection
+    {
+        return self::all();
+    }
 
     public static function index():Collection {
 
@@ -55,29 +61,14 @@ class Tags extends Model
     public static function hikeTag(int $id) {
         $hikeTag = DB::table('hikes_tags')
                         ->join('tags', 'hikes_tags.tag_id', '=', 'tags.id')
-                        ->select('tags.name')
+                        ->select('tags.name', 'tags.id')
                         ->where('hikes_tags.hike_id', '=', $id)
                         ->get();
 
         return json_decode($hikeTag);
     }
 
-        public static function hikesByTag(string $tag) {
-        $hikesByTag = DB::table('hikes')
-                        ->join('hikes_tags', 'hikes_tags.hike_id', '=', 'hikes.id')
-                        ->join('tags', 'tags.id', '=', 'hikes_tags.tag_id')
-                        ->select('hikes.*')
-                        ->where('tags.name', '=', $tag)
-                        ->get();
-
-            // SELECT `hikes`.*, `tags`.*
-            // FROM `hikes` 
-            // LEFT JOIN `hikes_tags` ON `hikes_tags`.`hike_id` = `hikes`.`id`
-            // LEFT JOIN `tags` ON `tags`.`id` = `hikes_tags`.`tag_id`
-            // WHERE `tags`.`name` = "mountains"
-
-        return json_decode($hikesByTag);
-    }
+        
 
 
 }

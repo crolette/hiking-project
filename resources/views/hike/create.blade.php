@@ -22,7 +22,7 @@
   </div>
     <div class="mb-5">
   <label for="distance" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Distance</label>
-      <input type="number" id="distance" name="distance" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+      <input type="number" id="distance" name="distance" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="1" max="999" required>
   </div>
     <div class="mb-5">
   <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
@@ -31,8 +31,26 @@
 
     <div class="mb-5">
   <label for="elevation_gain" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Elevation Gain</label>
-      <input type="time" id="elevation_gain" name="elevation_gain" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" required>
+      <input type="number" id="elevation_gain" name="elevation_gain" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 text-base focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" min="0" length="5" required>
   </div>
+
+  <fieldset class="mb-5">
+    <legend class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Choose the type of hike:</legend>
+    <div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+
+        <input type="radio" id="one_way" name="round_trip"  value="0"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" min="0" length="5" />
+        <label for="one_way" class="block text-sm font-medium text-gray-900 dark:text-white">One way</label>
+    </div>
+    
+    <div class="flex items-center gap-2">
+
+        <input type="radio" id="round_trip" name="round_trip" value="1"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" min="0" length="5" />
+        <label for="round_trip" class="block text-sm font-medium text-gray-900 dark:text-white">Round trip</label>
+    </div>
+    
+    </div>
+    </fieldset>
 
           <div class="mb-5">
       <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Description</label>
@@ -41,16 +59,16 @@
         
 
         <div>
+            <fieldset class="mb-5">
+                <legend class="mb-2 text-sm font-medium text-gray-900 dark:text-white">Tags</legend>
             @foreach($tags as $tag)
-            <fieldset>
-                <legend class="sr-only">Checkbox variants</legend>
 
-                <div class="flex items-center mb-4">
+                <div class="flex items-center gap-2">
                     <input type="checkbox" id="{{ $tag->id }}" name="tags[]" value="{{ $tag->id }}" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" >
-                    <label for="{{ $tag->id }}" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">{{ $tag->name }}</label>
+                    <label for="{{ $tag->id }}" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">{{ $tag->name }}</label>
                 </div>
-</fieldset>
-            @endforeach
+                @endforeach
+            </fieldset>
 
         </div>
 
