@@ -1,5 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/29fxUUK1)
-
 # The hiking project 🥾
 
 | Challenge Parameters | Challenge Details |
@@ -18,16 +16,16 @@ Help hikers to connect each others for building a better world.
 
 ## Goals - At the end of this challenge you should have improved your:
 
--   [ ] Project planning.
--   [ ] Mock-up creation.
--   [ ] _semantical_ HTML.
--   [ ] Database creation.
--   [ ] Creation of dynamic website.
--   [ ] Secure programming (with nice errors messages).
--   [ ] Use a router.
--   [ ] OOP.
--   [ ] MVC architecture.
--   [ ] Agile methodology.
+-   [x] Project planning.
+-   [x] Mock-up creation.
+-   [x] _semantical_ HTML.
+-   [x] Database creation.
+-   [x] Creation of dynamic website.
+-   [x] Secure programming (with nice errors messages).
+-   [x] Use a router.
+-   [x] OOP.
+-   [x] MVC architecture.
+-   [x] Agile methodology.
 
 ## Instructions
 
