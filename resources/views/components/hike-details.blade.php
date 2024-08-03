@@ -11,8 +11,6 @@ use Illuminate\Support\Facades\Auth;
         <th class="text-left px-5 py-2 bg-emerald-900 border-b border-4--emerald-900 border-gray-100 text-gray-300 capitalize">duration</th>
         <th class="text-left px-5 py-2 bg-emerald-900 border-b border-4--emerald-900 border-gray-100 text-gray-300 capitalize">elevation gain</th>
         <th class="text-left px-5 py-2 bg-emerald-900 border-b border-4--emerald-900 border-gray-100 text-gray-300 capitalize">description</th>
-        <th class="text-left px-5 py-2 bg-emerald-900 border-b border-4--emerald-900 border-gray-100 text-gray-300 capitalize">created at:</th>
-        <th class="text-left px-5 py-2 bg-emerald-900 border-b border-4--emerald-900 border-gray-100 text-gray-300 capitalize">updated at:</th>
     </tr>
     <tr>
         <td class="text-left py-4 px-5 border-4">{{ $hike->name }}</td>
@@ -21,8 +19,6 @@ use Illuminate\Support\Facades\Auth;
         <td class="text-left py-4 px-5 border-4">{{ $hike->duration }}</td>
         <td class="text-left py-4 px-5 border-4">{{ $hike->elevation_gain }}</td>
         <td class="text-left py-4 px-5 border-4">{{ $hike->description }}</td>
-        <td class="text-left py-4 px-5 border-4">{{ $hike->created_at }}</td>
-        <td class="text-left py-4 px-5 border-4">{{ $hike->updated_at }}</td>
     </tr>
 </table>
 

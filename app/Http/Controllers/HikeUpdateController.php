@@ -12,14 +12,14 @@ use Illuminate\View\View;
 class HikeUpdateController extends Controller
 {
     //
- public function create(int $id): View
+    public function create(int $id): View
     {
         $hike = Hikes::getHikeById($id);
         $hikeTags = Tags::hikeTag($id);
         $tags = Tags::getTags();
 
         // dd($hikeTags->id);
-        foreach($hikeTags as $tag) {
+        foreach ($hikeTags as $tag) {
             $results[] = $tag->id;
         }
 
@@ -49,7 +49,7 @@ class HikeUpdateController extends Controller
 
         // TODO Find existing hikeTag record with the hike ID and delete the one that do not have the tag id anymore
         $existingHikeTagsRecords = HikeTag::where('hike_id', $id)->get();
-        dd($existingHikeTagsRecords);
+        // dd($existingHikeTagsRecords);
 
 
         $hike = Hikes::find($id);
@@ -64,7 +64,7 @@ class HikeUpdateController extends Controller
             'description' => $validatedData['description'] ?? $hike->description,
         ]);
 
-         $tags = $request->input('tags');
+        $tags = $request->input('tags');
 
         HikeTag::whereIn('hike_id', [$id])->delete();
 
