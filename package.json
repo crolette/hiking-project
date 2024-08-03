@@ -4,7 +4,7 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "postinstall": "npm run buildd"
+        "postinstall": "npm run build"
     },
     "engines": {
         "node": "22.x"
