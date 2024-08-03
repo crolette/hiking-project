@@ -1,5 +1,5 @@
-import { defineConfig } from 'vite';
-import laravel from 'laravel-vite-plugin';
+import { defineConfig } from "vite";
+import laravel from "laravel-vite-plugin";
 
 export default defineConfig({
     plugins: [
@@ -10,4 +10,5 @@ export default defineConfig({
             buildDirectory: "build",
         }),
     ],
+    base: process.env.APP_URL ? "" : "/build/",
 });
