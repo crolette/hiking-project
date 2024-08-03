@@ -7,8 +7,7 @@ export default defineConfig({
             input: ["resources/css/app.css", "resources/js/app.js"],
             refresh: true,
             publicDirectory: "public",
-            buildDirectory: "build",
         }),
     ],
-    base: process.env.APP_URL ? "" : "/build/",
+    base: process.env.ASSET_URL ?? "/build/",
 });
